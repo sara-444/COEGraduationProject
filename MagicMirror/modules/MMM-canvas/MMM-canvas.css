@@ -1,0 +1,48 @@
+
+.toolsCanva{
+    border-radius: 10px;
+    padding: 6px;
+    margin: 2px;
+    display: flex;
+    gap: 10px;
+    width: fit-content;
+    align-items: center;
+}
+
+.toolsCanva .color-fieldCanva{
+    width: 30px;
+    height: 30px;
+    border: 1px solid rgb(234, 228, 228);
+    cursor: pointer;
+    border-radius: 12px;
+}
+
+.buttonCanva{
+    border-radius: 10px;
+    cursor: pointer;
+    border: 1px solid rgb(127, 127, 127);
+}
+
+.color-pickCanva{
+    border-radius: 10px;
+    cursor: pointer;
+    border: 1px solid rgb(127, 127, 127); 
+    width: 30px;
+    height: 30px;
+}
+
+.brush-sizeCanva{
+    width: 100px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#canvas{
+    
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 5px;
+    width: 97%;
+    height: 90%;
+    margin-top:60px;
+    cursor: pointer;
+}
