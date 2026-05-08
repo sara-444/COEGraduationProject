@@ -6,9 +6,8 @@ Module.register("MMM-news", {
          
         updateInterval: 300000, //  5 minutes 
         rotateInterval: 8000, //8 seconds
-        maxHeadlines: 10, 
-        animationSpeed: 1000,
-        language: "ar"
+        maxHeadlines: 40, 
+        animationSpeed: 1000
     },
 
     start: function() {
@@ -29,8 +28,7 @@ Module.register("MMM-news", {
  
     getNews: function() {
         this.sendSocketNotification("GET_NEWS", {
-            apiKey: this.config.apiKey,
-            language: this.config.language
+            apiKey: this.config.apiKey
         });
     },
 

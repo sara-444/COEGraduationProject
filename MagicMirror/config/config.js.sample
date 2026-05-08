@@ -106,11 +106,10 @@ let config = {
 			position: "bottom_center",
 			config: {
 				apiKey: "",
-				updateInterval: 300000, // Update news every 5 minutes 
-      				  rotateInterval: 8000, // Rotate headlines every 8 seconds
-      				  maxHeadlines: 40, // Maximum number of headlines to show
-     				   animationSpeed: 1000,
-     				   language: "ar" // Arabic language
+				updateInterval: 300000, // for fetch, 5 minutes 
+      				  rotateInterval: 8000, //for headlines 
+      				  maxHeadlines: 40, 
+     				   animationSpeed: 1000
 			}
 		},
 		{

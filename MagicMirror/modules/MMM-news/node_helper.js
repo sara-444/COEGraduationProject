@@ -48,7 +48,6 @@ module.exports = NodeHelper.create({
                 var body = Buffer.concat(chunks);
                 var bodyString = body.toString();
                 
-                console.log("MMM-News: Raw response:", bodyString.substring(0, 500));
                 
                 try {
                     var data = JSON.parse(bodyString);
@@ -65,15 +64,10 @@ module.exports = NodeHelper.create({
                                 title: item.headline || "No title",
                                 source: "Al Jazeera", 
                                 date: item.date || new Date().toISOString(),
-                                url: item.url || ""
                             };
                         });
                     }
                     
-                    console.log("MMM-News: Processed", newsArray.length, "news items");
-                    if (newsArray.length > 0) {
-                        console.log("MMM-News: First item:", JSON.stringify(newsArray[0]));
-                    }
                     
                     self.sendSocketNotification("NEWS_RESULT", newsArray);
                 } catch (e) {
