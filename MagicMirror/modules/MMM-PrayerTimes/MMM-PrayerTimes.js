@@ -12,8 +12,6 @@ Module.register("MMM-PrayerTimes", {
     },
 
   
-
-    // Required styles
     getStyles: function() {
         return ["MMM-PrayerTimes.css"];
     },
@@ -65,7 +63,7 @@ Module.register("MMM-PrayerTimes", {
             wrapper.appendChild(dateDiv);
         }
 
-        //prayer times table
+        
         const table = document.createElement("table");
         table.className = "prayer-table small";
 
@@ -133,24 +131,11 @@ Module.register("MMM-PrayerTimes", {
     formatTime: function(timeString) {
         if (!timeString) return "";
         
-        // Handle if timeString already has AM/PM (like "6:14 am")
         if (timeString.toLowerCase().includes('am') || timeString.toLowerCase().includes('pm')) {
-            if (this.config.timeFormat === "12") {
-                // Already in 12-hour format, just return it
                 return timeString;
-            } else {
-                // Convert to 24-hour format
-                const isPM = timeString.toLowerCase().includes('pm');
-                const timeOnly = timeString.replace(/am|pm/gi, '').trim();
-                const [hours, minutes] = timeOnly.split(':').map(Number);
-                let hour24 = hours;
-                if (isPM && hours !== 12) hour24 = hours + 12;
-                if (!isPM && hours === 12) hour24 = 0;
-                return `${hour24.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
-            }
         }
         
-        // Handle 24-hour format input
+        // Handle 24-h format input
         const [hours, minutes] = timeString.split(':').map(Number);
         
         if (this.config.timeFormat === "12") {
@@ -162,17 +147,17 @@ Module.register("MMM-PrayerTimes", {
         }
     },
 
-    // Parse time string to Date object
+    // time string to Date object
     parseTime: function(timeString) {
         if (!timeString) return new Date();
         
-        // Handle if timeString has AM/PM (like "6:14 am")
+    
         if (timeString.toLowerCase().includes('am') || timeString.toLowerCase().includes('pm')) {
             const isPM = timeString.toLowerCase().includes('pm');
             const timeOnly = timeString.replace(/am|pm/gi, '').trim();
             let [hours, minutes] = timeOnly.split(':').map(Number);
             
-            // Convert to 24-hour format
+            // Convert to 24-h
             if (isPM && hours !== 12) hours += 12;
             if (!isPM && hours === 12) hours = 0;
             
@@ -181,7 +166,7 @@ Module.register("MMM-PrayerTimes", {
             return date;
         }
         
-        // Handle 24-hour format
+        // Handle 24-h
         const [hours, minutes] = timeString.split(':').map(Number);
         const date = new Date();
         date.setHours(hours, minutes, 0, 0);
