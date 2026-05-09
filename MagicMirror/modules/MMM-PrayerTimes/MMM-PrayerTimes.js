@@ -5,10 +5,8 @@ Module.register("MMM-PrayerTimes", {
         updateInterval: 60 * 60 * 1000, // every hour
         method: 2, 
         showNextPrayer: true,
-        showQiblaDirection: false,
         animationSpeed: 1000,
         header: "Prayer Times",
-        timeFormat: "12"
     },
 
   
@@ -91,10 +89,7 @@ Module.register("MMM-PrayerTimes", {
             const timeCell = document.createElement("td");
             timeCell.className = "prayer-time";
             const time = this.prayerTimes.items[0][prayer];
-            timeCell.innerHTML = this.formatTime(time);
             row.appendChild(timeCell);
-
-        
 
             table.appendChild(row);
         });
@@ -128,24 +123,6 @@ Module.register("MMM-PrayerTimes", {
         }
     },
 
-    formatTime: function(timeString) {
-        if (!timeString) return "";
-        
-        if (timeString.toLowerCase().includes('am') || timeString.toLowerCase().includes('pm')) {
-                return timeString;
-        }
-        
-        // Handle 24-h format input
-        const [hours, minutes] = timeString.split(':').map(Number);
-        
-        if (this.config.timeFormat === "12") {
-            const period = hours >= 12 ? 'PM' : 'AM';
-            const displayHours = hours % 12 || 12;
-            return `${displayHours}:${minutes.toString().padStart(2, '0')} ${period}`;
-        } else {
-            return timeString;
-        }
-    },
 
     // time string to Date object
     parseTime: function(timeString) {
@@ -211,6 +188,6 @@ Module.register("MMM-PrayerTimes", {
         setInterval(() => {
             this.calculateNextPrayer();
             this.updateDom(this.config.animationSpeed);
-        }, 60000);
+        }, 300000);
     }
 });
